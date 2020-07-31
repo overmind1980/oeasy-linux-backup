@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script type="text/javascript" src="tree/tree.js"></script>
-        <script type="text/javascript">
-            function getUrlVars() {
-                var vars = [],
-                    hash;
-                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-                for (var i = 0; i < hashes.length; i++) {
-                    hash = hashes[i].split('=');
-                    vars.push(hash[0]);
-                    vars[hash[0]] = hash[1];
-                }
-                return vars;
-            }
+
+function getHtmlDocName() {
+    var str = window.location.href;
+    str = str.substring(str.lastIndexOf("/") + 1);
+    str = str.substring(0, str.lastIndexOf("."));
+    return str;
+}
 window.onload=function(){
     initData();
     simple01(treeClick);
     //alert(document.documentElement.clientHeight);
     let leftbar = document.getElementById("leftbar");
     leftbar.style.height =  document.documentElement.clientHeight+"px";
-    var id = getUrlVars()["id"]; 
+    var id = getHtmlDocName(); 
     var DivId = document.getElementById(id);
     document.getElementById("leftbar").scrollTop =DivId.offsetTop;
 }
@@ -83,16 +73,6 @@ function parseTreeNode(parentNode, parentId, dataList, click, dblclick, contextm
 function treeClick(node){
     //alert("单击了："+node.name);
 }
-function treeDblClick(node){
-    document.getElementById("text-node").value="双击了："+node.name;
-}
-function treeContextmenu(node){
-    document.getElementById("text-node").value="右键了："+node.name;
-    return false;
-}
-function dyclick(node){
-    window.currNode=node;
-}
 function codeStyle(code){
     code=code.replace(new RegExp('<','g'),'&lt;');
     code=code.replace(new RegExp('>','g'),'&gt;');
@@ -150,20 +130,3 @@ function screenHeight(){
     return document.documentElement.clientHeight||document.documentElement.offsetHeight||document.body.clientHeight||document.body.offsetHeight;
 };
 
-        </script>
-        <style type="text/css">
-html,body{padding:0px;margin:0px;font-size:13px;}
-        </style>
-    </head>
-    <body>
-        <span id="leftbar" style="float:left;width:30%;overflow:scroll;">
-            <div id="simple-01-parent" style=""></div>
-            </div>
-            </div>
-        </span>
-        <div id="content" style="width:70%">
-            <iframe src="./abc.html" style="height:400%;"></iframe>
-        </div>
-        </div>
-    </body>
-</html>

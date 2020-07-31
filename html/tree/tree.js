@@ -349,7 +349,6 @@ function Tree(id, document_){
 			}else{
 				id.insertBefore(this.node,id.childNodes[index]);
 			}
-			id.style.overflow="auto";
 			var browser=window.navigator.appVersion;
 			if(browser.indexOf("MSIE 6.0")!=-1){
 				if(typeof this.initChecked!='undefined'){
@@ -584,7 +583,7 @@ function TreeNode(propertys){
 			
 			this.node=Tree.document.createElement('div');
             this.node.id = propertys.id;
-			this.node.style.cssText="font-size:12px;position:static;text-align:left;line-height:18px;background-color:"+(this.background||"#FFFFFF")+";";
+			this.node.style.cssText="font-size:14px;position:static;text-align:left;line-height:18px;background-color:"+(this.background||"#FFFFFF")+";";
 			this.openNode=Tree.document.createElement('img');
 			this.openNode.style.cssText="width:18px;vertical-align: middle;";
 			this.openNode.src=Tree.path+"empty.gif";
