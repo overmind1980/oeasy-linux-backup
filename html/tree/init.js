@@ -71,7 +71,14 @@ function parseTreeNode(parentNode, parentId, dataList, click, dblclick, contextm
     }
 }
 function treeClick(node){
-    //alert("单击了："+node.name);
+    var url = "../../../";
+    url = url+node.name.substring(0,2)+"/";
+    url = url+node.name.substring(0,4)+"/";
+    var name  = node.name.replace(/[^0-9a-zA-Z_]/g,"");
+    url = url +name+"\/"+name+".html";
+    window.open(url,"_self");
+    //alert("单击了："+url);
+
 }
 function codeStyle(code){
     code=code.replace(new RegExp('<','g'),'&lt;');
